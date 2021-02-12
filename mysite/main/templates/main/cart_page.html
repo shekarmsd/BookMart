@@ -1,0 +1,88 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+    {% include "main/includes/head.html" %}
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+
+        function getToken(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getToken('csrftoken');
+    </script>
+    <style type="text/css">
+        .quantity{
+            display: inline-block;
+            font-weight: 700;
+            padding-right: 18
+        }
+        .chg-quantity{
+            width: 12px;
+            cursor: pointer;
+            display: block;
+            margin-top: 5px;
+            transition: .1s;
+        }
+        .chg-quantity:hover{
+            opacity: .6;
+        }
+    </style>
+<body>
+
+    <!-- header -->
+   {% include "main/includes/navbar.html" %}
+    <!-- //header -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Cart</span>
+            </div>
+        </nav>
+    </div>
+    <!-- Book content -->
+    {% if cartItems <= 0 %}
+
+        <section class="subscribe_part section_padding" style="padding: 160px;">
+            <div class="container">
+                {% include "main/includes/messages.html" %}
+                <div class="text-center">
+                  <div class="card-body">
+                    <p class="card-title"><i class="fas fa-shopping-cart fa-7x" style="color: gold"></i></p>
+                    <h2 class="card-title">Your cart is empty</h2><br/>
+                    <a href="/category" class="btn btn-info btn-lg">Continue Shopping</a>
+                  </div>
+                </div>
+            </div>
+        </section>
+
+    {% else %}
+
+        {% include "main/includes/cart_content.html" %}
+
+    {% endif %}
+
+    <!-- //Book content -->
+
+
+    <!-- footer-66 -->
+  {% include "main/includes/footer.html" %}
+
+  <script type="text/javascript" src="{% static 'main/js/cart.js' %}"></script>
+    <!--//footer -->
+</body>
+</html>
+<!-- responsive tabs -->
+{% include "main/includes/scripts.html" %}

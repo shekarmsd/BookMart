@@ -1,0 +1,118 @@
+    {% load static %}
+    <section class="w3l-contact-1">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+            	{% include "main/includes/messages.html" %}
+			  <div class="card-body text-center">
+			  	<div class="row">
+			  		<div class="col col-md-4">
+			  			<h5 class="card-title">Books</h5>
+			  			<h1>{{order.get_cart_items}}</h1>
+			  		</div>
+			  		<div class="col col-md-4">
+			  			<h5 class="card-title">Choose Package...</h5>
+			  			<form action="/checkout/" method="POST">
+			  				{% csrf_token %}
+			  				<select id="pack" name="pack" class="form-control" required>
+			  					<option value="50">One Week Packge</option>
+			  					<option value="80">Two Weeks Package</option>
+			  					<option value="150">One Month Package</option>
+			  				</select><br/>
+			  				<a href="#" class="btn btn-dark" data-toggle="modal" data-target="#orderdet">View Package Details</a>
+			  		</div>
+			  		<div class="col col-md-4">
+			  			<h5 class="card-title"> </h5><br/>
+			  			<div class="search-right">
+                        	<button type="submit" class="btn btn-info">Proceed to checkout</button>
+                    	</div>
+			  		</div>
+			  		</form>
+			  	</div>
+			    <!-- <h5 class="card-title">Special title treatment</h5>
+			    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			    <a href="#" class="btn btn-primary">Go somewhere</a> -->
+			  </div><br/>
+			  <div class="card-body text-center">
+			    <h5 class="card-title"></h5>
+			    <p class="card-text text-left"> <a href="/category"><i class="fas fa-arrow-left"></i> Continue Shopping</a> </p>&nbsp;
+			    <table class="table table-borderless">
+					<thead>
+					    <tr>
+					      <th scope="col"></th>
+					      <th scope="col">Book Title</th>
+					      <th scope="col">Author</th>
+					      <th scope="col">Quantity</th>
+					      <!-- <th scope="col">Total</th> -->
+					      <th scope="col"></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	{% for item in items %}
+					    <tr style="border-bottom: 1px solid gray;">
+					      <th scope="row"><img src="{{item.books.imageURL}}" alt="..." class="rounded-sm" style="max-width: 150px; max-height: 150px;"></th>
+					      <td>{{item.books.book_title}}</td>
+					      <td>{{item.books.book_author}}</td>
+					      <td>
+					      	{{item.quantity}}
+					      	<!-- <div class="quantity">
+								<img data-product={{item.books.id}} data-action="add" class="chg-quantity update-cart" src="{% static  'main/images/up.png' %}">
+						
+								<img data-product={{item.books.id}} data-action="remove" class="chg-quantity update-cart" class="chg-quantity" src="{% static  'main/images/down.png' %}">
+							</div> -->
+					      </td>
+					      <!-- <td>₹ {{item.get_total}}</td> -->
+					      <td><a data-product={{item.books.id}} data-action="remove" class="btn btn-danger update-cart" style="color: #fff;">Remove</a></td>
+					    </tr>	
+				  	</tbody>
+				  	{% endfor %}
+				</table><br/>
+			  </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="modal fade" id="orderdet" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Package Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" title="Close">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-group text-center">
+						  <div class="card">
+						    <img class="card-img-top" src="{% static 'main/images/slider1.jpg' %}" alt="Card image cap">
+						    <div class="card-body">
+						      <h5 class="card-title">One Week</h5>
+						      <p class="card-text">One week package offers period of 7 days of reading e-book content. We offer e-content for low cost comparing to others.</p><br/>
+						      <h5 class="card-text">Only 50/-</h5>
+						    </div>
+						  </div>
+						  <div class="card">
+						    <img class="card-img-top" src="{% static 'main/images/slider2.jpg' %}" alt="Card image cap">
+						    <div class="card-body">
+						      <h5 class="card-title">Two Weeks</h5>
+						      <p class="card-text">Two weeks package offers period of 14 days of reading e-book content. We offer e-content for low cost comparing to others.</p><br/>
+						      <h5 class="card-text">Only 80/-</h5>
+						    </div>
+						  </div>
+						  <div class="card">
+						    <img class="card-img-top" src="{% static 'main/images/slider3.jpg' %}" alt="Card image cap">
+						    <div class="card-body">
+						      <h5 class="card-title">One month</h5>
+						      <p class="card-text">One month package offers period of 30 days of reading e-book content. We offer e-content for low cost and long duration comparing to others.</p><br/>
+						      <h5 class="card-text">Only 150/-</h5>
+						    </div>
+						  </div>
+						</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><span style="color: #fff;">Close</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,25 @@
+{% if messages %} 
+    {% for message in messages %} 
+        {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button><strong>Success! </strong>{{message}}
+            </div>
+            {% elif message.tags == 'info' %}
+            <div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button><strong>Info! </strong>{{message}}
+            </div>
+        {% endif %} 
+    {% endfor %} 
+{% endif %}
+
+<!-- {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "success" %}  <script> alertify.alert('Alert Title', '{{message}}', function(){ alertify.success('Ok'); });</script> {% endif %}
+    {% if message.tags == "error" %}  <script> alertify.error('{{message}}');</script> {% endif %}
+
+    {% if message.tags == "warning" %}<script>alertify.confirm('Delete Comment', '{{message}}', function(){ alertify.success('Ok') }
+        , function(){ alertify.error('Cancel')});</script>{% endif %}
+    {% endfor %}
+
+{% endif %}
+ -->

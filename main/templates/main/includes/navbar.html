@@ -1,0 +1,90 @@
+<header id="site-header" class="w3l-header fixed-top">
+    <!--/nav-->
+    <nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+        <div class="container">
+            <h1><a class="navbar-brand" href="/"><span class="fas fa-book-reader"
+                           aria-hidden="true"></span>
+                       Book Mart </a></h1>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                   <!-- <span class="navbar-toggler-icon"></span> -->
+                   <span class="fa icon-expand fa-bars"></span>
+                   <span class="fa icon-close fa-times"></span>
+               </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {{ index }}" href="/">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ category }}" href="/category">Categories</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ contact }}" href="/contact">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link">|</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ customer }}" title="View Profile" href="/customer/{{user.id}}"><span style="color: gray;" class="fas fa-user"></span> {{user.username}}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ library }}" href="/mylibrary">My Library</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{cart}}" href="/cart_page"><span class="fas fa-shopping-cart" style="color: gray;"></span><strong style="color: #DF0E62; font-size: large;"> {{cartItems}}</strong></a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link {{sell_book}}" href="/sell_book">Sell Book <span class="fas fa-bullhorn" style="color: gray;"></span></a>
+                    </li>
+                     -->
+                    
+                </ul>&nbsp;&nbsp;&nbsp;
+                    <div class="search-right">
+                        <a href="/logout" class="btn search-hny mr-lg-3 mt-lg-0 mt-4">Signout</span></a>
+                    </div>
+
+                    {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ contact }}" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ login }}" href="/login">Login</a>
+                    </li>
+
+                </ul>
+                
+                <div class="search-right">
+                    <a href="/register" class="btn search-hny mr-lg-3 mt-lg-0 mt-4">Register</span></a>
+                </div>
+
+                {% endif %}
+            </div>
+        </div>
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position">
+            <nav class="navigation">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                               <input type="checkbox" id="checkbox">
+                               <div class="mode-container">
+                                   <i class="gg-sun"></i>
+                                   <i class="gg-moon"></i>
+                               </div>
+                           </label>
+                </div>
+            </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+    </nav>
+    <!--//nav-->
+</header>

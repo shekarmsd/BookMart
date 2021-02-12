@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+{% include "main/includes/head.html" %}
+
+<body>
+    <!-- header -->
+    <!-- header -->
+    {% include "main/includes/navbar.html" %}
+    <!-- //header -->
+    <!--/breadcrumbs -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Contact</span>
+            </div>
+        </nav>
+    </div>
+    <!--//breadcrumbs -->
+
+
+
+    <!-- contact1 -->
+    <section class="w3l-contact-1">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+                <div class="headerhny-title text-center">
+                    {% include "main/includes/messages.html" %}
+                    <h4 class="sub-title text-center">Contact us</h4>&nbsp
+                    <h3 class="hny-title mb-0">Leave a Message</h3>
+                    <p class="hny-title mb-lg-5 mb-4">If you have a question regarding our services, feel free to contact us using the form below.</p>
+                </div>
+                <div class="contact-view mt-lg-5 mt-4">
+                    <div class="conhny-form-section">
+                        <form action="" method="POST" class="formhny-sec">
+                            {% csrf_token %}
+
+                            <div class="form-grids">
+                                <div class="form-input">
+                                    {{form.name.label_tag}} {{form.name}}
+                                </div>
+                                <div class="form-input">
+                                    {{form.email.label_tag}} {{form.email}}
+                                </div>
+                                <div class="form-input">
+                                    {{form.phone_number.label_tag}} {{form.phone_number}}
+                                </div>
+                                <div class="form-input">
+                                    {{form.subject.label_tag}} {{form.subject}}
+                                </div>
+                            </div>
+                            <div class="form-input mt-4">
+                                {{form.message.label_tag}} {{form.message}}
+                            </div>
+
+                            <div class="submithny text-right mt-4">
+                                <button class="btn read-button">Submit Message</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="d-grid contact-addres-inf mt-5 pt-lg-4">
+                        <div class="contact-info-left d-grid">
+                            <div class="contact-info">
+                                <div class="icon">
+                                    <span class="fa fa-location-arrow" aria-hidden="true"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Address:</h4>
+                                    <p>Kristu Jayanti College, Bangalore, Karnataka - 560077</p>
+                                </div>
+                            </div>
+                            <div class="contact-info">
+                                <div class="icon">
+                                    <span class="fa fa-phone" aria-hidden="true"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Phone:</h4>
+                                    <p><a href="tel:+598-658-456">+91 9876453289</a></p>
+                                    <p><a href="tel:+598-658-457">+91 8776752146</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-info">
+                                <div class="icon">
+                                    <span class="fa fa-envelope-open-o" aria-hidden="true"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Mail:</h4>
+                                    <p><a href="mailto:mail@example.com" class="email">book.mart@gmail.com</a></p>
+                                    <p><a href="mailto:mail@example.com" class="email">help.book@gmail.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /contact1 -->
+    <!-- footer-66 -->
+    {% include "main/includes/footer.html" %}
+    <!--//footer-66 -->
+</body>
+
+</html>
+{% include "main/includes/scripts.html" %}

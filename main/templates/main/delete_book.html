@@ -1,0 +1,40 @@
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+{% include "main/includes/head.html" %}
+
+<body>
+    <!-- header -->
+
+       <section class="w3l-contact-1" style="padding: 200px;">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+				<div class="text-center">
+					<div class="card-body">
+						<h4 class="card-title">Are you sure! you want to delete <strong style="color: black; font-size: 2rem;">{{book.book_title}}</strong> book?</h4>
+						<p class="card-text"> </p><br/>
+						<form action="" method="POST">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col" style="text-align: right;">
+									<a href="/dashboard" class="btn btn-lg btn-info">Cancle</a>
+								</div>
+								<div class="col" style="text-align: left;">
+									<input type="submit" class="btn btn-lg btn-danger" value="Confirm" name="Confirm">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
+{% include "main/includes/scripts.html" %}

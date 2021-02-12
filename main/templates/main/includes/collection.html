@@ -1,0 +1,117 @@
+
+{% load static %}
+    <!--//breadcrumbs -->
+    <!--/genre -->
+    <!--grids-sec1-->
+
+<section class="w3l-albums py-5" id="projects">
+    <div class="container">
+        {% include 'main/includes/messages.html' %}
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="headerhny-left">
+                    <h4 class="hny-title">Fiction Books</h4>
+                </div>
+                <div class="resp-tabs-container hor_1">
+                    <div class="albums-content">
+                        <div class="row">
+                            {% for tut in fiction %}
+                            <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                                <div class="slider-info">
+                                    <div class="img-circle">
+                                        <a href="/view_book/{{tut.id}}" title="View book">
+                                            <img src="{{tut.imageURL}}" class="img-fluid" alt="author image">
+                                        </a>
+                                    </div>
+                                    <div class="message">
+                                        <a class="author-book-title" href="/view_book/{{tut.id}}">{{tut.book_title}}</a>&nbsp;
+                                        <p>By {{tut.book_author}}</p>&nbsp;<br/>
+                                         <button data-product={{tut.id}} data-action="add" class="btn btn-info add-btn update-cart">Add to cart</button>   
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="w3l-albums" id="projects">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="headerhny-left">
+                    <h4 class="hny-title">Non Fiction Books</h4>
+                </div>
+                <div class="resp-tabs-container hor_1">
+                    <div class="albums-content">
+                        <div class="row">
+                            {% for tut in nonfiction %}
+                            <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                                <div class="slider-info">
+                                    <div class="img-circle">
+                                        <a href="/view_book/{{tut.id}}" title="View book">
+                                            <img src="{{tut.imageURL}}" class="img-fluid" alt="author image">
+                                        </a>
+                                    </div>
+                                    <div class="message">
+                                        <a class="author-book-title" href="/view_book/{{tut.id}}">{{tut.book_title}}</a>
+                                        <p>By {{tut.book_author}}</p>&nbsp;<br/>
+                                         <button data-product={{tut.id}} data-action="add" class="btn btn-info add-btn update-cart">Add to cart</button>   
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><br/>
+    <!--//grids-sec1-->
+
+
+ <!--grids-sec1-->
+   
+    <!--//grids-sec1-->
+
+<section class="w3l-albums" id="projects">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="headerhny-left">
+                    <h4 class="hny-title">Popular Books</h4>
+                </div>
+                <div class="resp-tabs-container hor_1">
+                    <div class="albums-content">
+                        <div class="row">
+                            {% for tut in books %}
+                            <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                                <div class="slider-info">
+                                    <div class="img-circle">
+                                        <a href="/view_book/{{tut.id}}" title="View book">
+                                            <img src="{{tut.imageURL}}" class="img-fluid" alt="author image">
+                                        </a>
+                                    </div>
+                                    <div class="message">
+                                        <a class="author-book-title" href="/view_book/{{tut.id}}">{{tut.book_title}}</a>
+                                        <p>By {{tut.book_author}}</p>&nbsp;<br/>
+                                         <button data-product={{tut.id}} data-action="add" class="btn btn-info add-btn update-cart">Add to cart</button>   
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><br/>
+    <!--grids-sec2-->

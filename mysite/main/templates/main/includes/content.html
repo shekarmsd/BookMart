@@ -1,0 +1,93 @@
+ {% load static %}
+
+<section class="w3l-albums py-5" id="projects">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <!--Horizontal Tab-->
+                <div class="headerhny-left">
+                    <h3 class="hny-title">Popular Books</h3>
+                </div>
+
+                <div class="resp-tabs-container hor_1">
+                    <div class="albums-content">
+                        <div class="row">
+                            <!--/set1-->
+                            {% for tut in books %}
+                            <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+
+                                <div class="slider-info">
+                                    <div class="img-circle">
+                                        <a href="/view_book/{{tut.id}}" title="View book">
+
+                                            <img src="{{tut.imageURL}}" class="img-fluid" alt="author image">
+
+                                        </a>
+                                    </div>
+
+                                    <div class="message">
+                                        <a class="author-book-title" href="/view_book/{{tut.id}}">{{tut.book_title}}</a>&nbsp;
+                                        <p>By {{tut.book_author}}</p>&nbsp;
+                                        <h5>₹ {{tut.book_price|floatformat:2}}</h5>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            {% endfor %}
+
+                            <!--//set1-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+    <section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="headerhny-title">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left">
+                            <h3 class="hny-title">New Releases</h3>
+                        </div>
+                        <div class="headerhny-right text-lg-right">
+                            <h4><a class="show-title" href="/category">Show all</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-three owl-carousel owl-theme">
+                    {% for product in books %}
+                    <div class="item vhny-grid">
+                        <div class="box16 mb-0">
+                            <a href="/view_book/{{product.id}}">
+                                <figure>
+                                    <img class="img-fluid" src="{{product.imageURL}}" alt="" style="max-height: 300px; min-height: 165px;">
+                                </figure>
+                                <div class="box-content">
+                                    <h6> <span class="post"><span class="fa fa-clock-o"> </span> {{product.book_published}}</span>
+                                    </h6>
+                                </div>
+                            </a>
+                        </div>
+                        <h3> <a class="title-gd" href="/view_book/{{product.id}}">{{product.book_title}}</a></h3>
+                        <p>{{product.book_author}}</p>
+                        {% if user.is_authenticated %}
+                        <div class="button-center text-center mt-4">
+                            <button data-product={{product.id}} data-action="add" class="btn btn-info add-btn update-cart">Add to cart</button>     
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- //View model -->
+
+<!--/tabs-->

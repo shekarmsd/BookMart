@@ -1,0 +1,73 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+{% include "main/includes/head.html" %}
+
+<body>
+
+    <!-- header -->
+    {% include "main/includes/navbar.html" %}
+    <!-- //header -->
+
+    <!-- Sell Content -->
+
+    				<section class="w3l-contact-1" style="padding: 60px;">
+				        <div class="contacts-9 py-5">
+				            <div class="container py-lg-4">
+				                <div class="headerhny-title text-center">
+				                    {% include "main/includes/messages.html" %}
+				                    <h4 class="sub-title text-center">SELL YOUR BOOK</h4>&nbsp
+				                    <p class="hny-title mb-lg-5 mb-4"><span style="color: red;">Note: </span>If you have a question regarding our services, feel free to contact us <a href="/contact">here</a>.</p>
+				                </div>
+				                <div class="contact-view mt-lg-5 mt-4">
+				                    <div class="conhny-form-section">
+				                        <form action="/mylibrary/" method="POST" enctype="multipart/form-data" class="formhny-sec">
+				                            {% csrf_token %}
+
+				                            <div class="form-grids">
+				                                <div class="form-input">
+				                                    {{form.book_title.label_tag}} {{form.book_title}}
+				                                </div>
+				                                <div class="form-input">
+				                                    {{form.book_author.label_tag}} {{form.book_author}}
+				                                </div>
+				                                <div class="form-input">
+				                                    {{form.book_image.label_tag}} {{form.book_image}}
+				                                </div>
+				                                <div class="form-input">
+				                                    {{form.book_pdf.label_tag}} {{form.book_pdf}}
+				                                </div>
+				                                <div class="form-input">
+				                                    {{form.book_category.label_tag}}<br/> {{form.book_category}}
+				                                </div>
+				                                <div class="form-input">
+				                                    {{form.book_price.label_tag}} {{form.book_price}}
+				                                </div>
+				                            </div>
+				                            <div class="form-input mt-4">
+				                                {{form.book_description.label_tag}} {{form.book_description}}
+				                            </div>
+
+				                            <div class="submithny text-center mt-4">
+				                                <button class="btn read-button">Submit</button>
+				                            </div>
+				                        </form>
+				                    </div>
+                				</div>
+    						</div>
+    					</div>
+    				</div>
+    			</section>
+
+
+    <!-- //Sell Content -->
+
+    <!-- footer-66 -->
+    {% include "main/includes/footer.html" %}
+    <!--//footer -->
+</body>
+
+</html>
+<!-- responsive tabs -->
+{% include "main/includes/scripts.html" %}

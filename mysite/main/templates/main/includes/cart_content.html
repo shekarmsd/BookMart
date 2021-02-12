@@ -1,0 +1,64 @@
+    {% load static %}
+    <section class="w3l-contact-1">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+            	{% include "main/includes/messages.html" %}
+			  <div class="card-body text-center">
+			  	<div class="row">
+			  		<div class="col col-md-4">
+			  			<h5 class="card-title">Books</h5>
+			  			<h1>{{order.get_cart_items}}</h1>
+			  		</div>
+			  		<div class="col col-md-4">
+			  			<h5 class="card-title">Total Price</h5>
+			  			<h1>₹ {{order.get_cart_total|floatformat:2}}</h1>
+			  		</div>
+			  		<div class="col col-md-4">
+			  			<h5 class="card-title"> </h5><br/>
+			  			<div class="search-right">
+                        	<a href="/checkout" class="btn btn-info">Proceed to checkout</span></a>
+                    	</div>
+			  		</div>
+			  	</div>
+			    <!-- <h5 class="card-title">Special title treatment</h5>
+			    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			    <a href="#" class="btn btn-primary">Go somewhere</a> -->
+			  </div><br/>
+			  <div class="card-body text-center">
+			    <h5 class="card-title"></h5>
+			    <p class="card-text text-left"> <a href="/category"><i class="fas fa-arrow-left"></i> Continue Shopping</a> </p>&nbsp;
+			    <table class="table table-borderless">
+					<thead>
+					    <tr>
+					      <th scope="col"></th>
+					      <th scope="col">Book Title</th>
+					      <th scope="col">Price</th>
+					      <th scope="col">Quantity</th>
+					      <th scope="col">Total</th>
+					      <th scope="col"></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	{% for item in items %}
+					    <tr style="border-bottom: 1px solid gray;">
+					      <th scope="row"><img src="{{item.books.imageURL}}" alt="..." class="rounded-sm" style="max-width: 100px; max-height: 100px;"></th>
+					      <td>{{item.books.book_title}}</td>
+					      <td>₹ {{item.books.book_price|floatformat:2}}</td>
+					      <td>
+					      	{{item.quantity}}
+					      	<!-- <div class="quantity">
+								<img data-product={{item.books.id}} data-action="add" class="chg-quantity update-cart" src="{% static  'main/images/up.png' %}">
+						
+								<img data-product={{item.books.id}} data-action="remove" class="chg-quantity update-cart" class="chg-quantity" src="{% static  'main/images/down.png' %}">
+							</div> -->
+					      </td>
+					      <td>₹ {{item.get_total}}</td>
+					      <td><a data-product={{item.books.id}} data-action="remove" class="btn btn-danger update-cart" style="color: #fff;">Remove</a></td>
+					    </tr>	
+				  	</tbody>
+				  	{% endfor %}
+				</table><br/>
+			  </div>
+            </div>
+        </div>
+    </section>

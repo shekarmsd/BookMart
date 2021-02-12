@@ -1,0 +1,80 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+
+    {% include "main/includes/head.html" %}
+<body>
+
+    <!-- header -->
+   {% include "main/includes/navbar.html" %}
+    <!-- //header -->
+
+    {% if tot <= 0 %}
+
+        <section class="subscribe_part section_padding" style="padding: 220px;">
+            <div class="container">
+                <div class="text-center">
+                  <div class="card-body">
+                    <p class="card-title"><i class="fas fa-book-open fa-7x" style="color: gray"></i></p>
+                    <h2 class="card-title">Your library is empty</h2><br/>
+                    <a href="/category" class="btn btn-success btn-lg">Buy / Subscribe Books</a>
+                  </div>  
+                </div>
+            </div>
+        </section>
+
+    {% else %}
+
+        <section class="w3l-grids" style="padding: 160px;">
+        <div class="grids-main">
+            <div class="container py-lg-4">
+                 {% include "main/includes/messages.html" %}
+                <div class="headerhny-title">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left">
+                            <h3 class="hny-title">Subscribed Books</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w3l-populohny-grids">
+                    {% for tut in fiction %}
+                        {% if tut.order_id.end_date >= today.date %}
+                            <div style="width: 30rem;">
+                                <div class="card-body">
+                                    <h6 class="card-header">Package Expire Date : <span style="color: red;">{{tut.order_id.end_date}}</span></h6>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 text-right">
+                                        <img class="card-img-top" src="{{tut.book.imageURL}}" alt="{{tut.book.book_title}}" style="width: 150px; height: 150px;">
+                                    </div>
+                                    <div class="col-8">
+                                        <h5 class="card-title">{{tut.book.book_title}}</h5>
+                                        <p class="card-text">{{tut.book.book_description}}</p><br/>
+                                        <a href="{{tut.book.book_pdf.url}}" target="_blank" class="btn btn-success">Read Now</a>
+                                    </div>&nbsp;
+                                </div>
+                            </div>
+                            <!-- <embed src="{{tut.book.book_pdf.url}}" width="500" height="375" type="application/pdf"> -->
+                        {%endif%}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endif %}
+
+
+    <!-- footer-66 -->
+  {% include "main/includes/footer.html" %}
+
+
+  <script type="text/javascript" src="{% static 'main/js/cart.js' %}"></script>
+
+  {% include "main/includes/scripts.html" %}
+    <!--//footer -->
+</body>
+</html>
+<!-- responsive tabs -->

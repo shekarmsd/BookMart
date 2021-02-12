@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html lang="en">
+
+{% include "main/includes/head.html" %}
+
+<body>
+    <!-- header -->
+     {% include "main/includes/navbar.html" %}
+    <!-- //header -->
+   
+
+    <section class="w3l-contact-1" style="padding: 60px 0 20px;">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+                <div class="headerhny-title text-center">
+                    <h4 class="sub-title text-center">Register</h4>
+                </div>
+                <div class="contact-view mt-lg-5 mt-4">
+                    <div class="conhny-form-section">
+                        <form action="" method="post" class="formhny-sec">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                {{field.label}}
+                                {{field}}
+                            {% endfor %}
+                            <div><br/>
+                                {{form.errors}}
+                            </div>  
+                            <div class="submithny text-right mt-4">
+                                <button class="btn read-button">Register</button>
+                            </div>
+
+                        </form>
+                                
+                        <h6>If you alredy have an account, <a href="/login"><strong>Login</strong></a> insted.</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer-66 -->
+  {% include "main/includes/footer.html" %}
+    <!--//footer-66 -->
+</body>
+
+</html>
+{% include "main/includes/scripts.html" %}

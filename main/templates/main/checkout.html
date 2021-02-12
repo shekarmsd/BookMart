@@ -1,0 +1,101 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    {% include "main/includes/head.html" %}
+<body>
+
+    <!-- header -->
+   {% include "main/includes/navbar.html" %}
+    <!-- //header -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Checkout</span>
+            </div>
+        </nav>
+    </div>
+    <!-- Book content -->
+
+    <section class="w3l-contact-1">
+        <div class="contacts-9 py-5">
+            <div class="container py-lg-4">
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="card-body">
+                        <h4 class="card-title text-center">Payment Card</h4>&nbsp;
+                        <form action="/confirm/" method="POST" class="formhny-sec">
+                            {% csrf_token %}
+                            <div class="form-grids">
+                                <div class="form-input">
+                                    <input type="text" name="name" id="name" value="{{request.user}}" disabled placeholder="Name" style="cursor: not-allowed;">
+                                </div>
+                                <div class="form-input">
+                                    <input type="email" name="email" id="email" value="{{request.user.email}}" disabled placeholder="Email address" style="cursor: not-allowed;">
+                                </div>
+                            </div>&nbsp;
+                            <h6 class="card-title" style="font-size: large;">Card Details</h6>
+                            <div class="form-grids">
+                                <div class="form-input">
+                                    <input type="text" name="card_no" id="card_no" placeholder="Card number">
+                                </div>
+                                <div class="form-input">
+                                    <input type="month" name="exp_date" id="exp_date" min="2020-12" value="2020-12">
+                                </div>
+                                <div class="form-input">
+                                    <input type="password" name="cvv" id="cvv" placeholder="CVV">
+                                </div>
+                            </div>&nbsp;
+                            <p class="card-text">We will keep your details safe. CVV number will not be stored!</p><br/>    
+                            <button class="btn btn-info btn-lg btn-block">Confirm Now</button>
+                            </div>
+                        </form>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title">Order Summery</h5>
+                            </div>
+                            <div class="col">
+                                <div class="text-right">
+                            <a href="/cart_page" class="btn btn-warning">Back to cart</a>
+                            </div>&nbsp;
+                            </div>
+                        </div>
+                        {% for item in items %}
+                        <table class="table table-borderless">
+                              <tbody>
+                                <tr>
+                                  <th scope="row"><img src="{{item.books.imageURL}}" alt="..." class="rounded-sm" style="max-height: 100px; max-width: 100px;"></th>
+                                  <td>{{item.books.book_title}}</td>
+                                  <td>{{pc}}</td>
+                                  <td>{{amount}}</td>
+                                  <td>&times; {{item.quantity}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {% endfor %}
+                        <div class="text-center">
+                            <h6 class="card-title">Items: <span style="color: red;">{{order.get_cart_items}}</span></h6>
+                        <h6 class="card-title">Total Amount: ₹ <span style="color: red;">{{total}}</span></h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- //Book content -->
+
+
+    <!-- footer-66 -->
+  {% include "main/includes/footer.html" %}
+    <!--//footer -->
+</body>
+</html>
+<!-- responsive tabs -->
+{% include "main/includes/scripts.html" %}

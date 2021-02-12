@@ -1,0 +1,131 @@
+
+{% load static %}
+    <!--//breadcrumbs -->
+    <!--/genre -->
+    <!--grids-sec1-->
+
+    <section class="w3l-grids">
+        <div class="grids-main">
+            <div class="container py-lg-4">
+                {% include "main/includes/messages.html" %}
+                <div class="headerhny-title">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left">
+                            <h3 class="hny-title">Fiction Books</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3l-populohny-grids">
+                    {% for tut in fiction %}
+                    <div class="item vhny-grid">
+                        <div class="box16 mb-0">
+                            <a href="/view_book/{{tut.id}}">
+                                <figure>
+                                    <img class="img-fluid" src="{{ tut.imageURL }}" alt="{{tut.book_title}}" style="max-height: 340px; min-height: 160px;">
+                                </figure>
+                                <div class="box-content">
+                                    <h3 class="title">{{tut.book_title}}</h3>
+                                    <h3 class="title">{{tut.book_author}}</h3>
+                                    <h4> <span class="post"><span class="fa fa-clock-o"> </span> {{tut.book_published}}</span>
+                                        <span class="post fa fa-heart text-right"></span>
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="button-center text-center mt-4">
+                            <button data-product={{tut.id}} data-action="add" class="btn btn-info add-btn update-cart">Add to cart</button>     
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+               
+            </div>
+
+        </div>
+    </section>
+
+        <section class="w3l-grids">
+        <div class="grids-main">
+            <div class="container py-lg-4">
+                <div class="headerhny-title">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left">
+                            <h3 class="hny-title">Non Fiction Books</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3l-populohny-grids">
+                    {% for tut in nonfiction %}
+                    <div class="item vhny-grid">
+                        <div class="box16 mb-0">
+                            <a href="/view_book/{{tut.id}}">
+                                <figure>
+                                    <img class="img-fluid" src="{{ tut.imageURL }}" alt="{{tut.book_title}}" style="max-height: 340px; min-height: 160px;">
+                                </figure>
+                                <div class="box-content">
+                                    <h3 class="title">{{tut.book_title}}</h3>
+                                    <h3 class="title">{{tut.book_author}}</h3>
+                                    <h4> <span class="post"><span class="fa fa-clock-o"> </span> {{tut.book_published}}</span>
+                                        <span class="post fa fa-heart text-right"></span>
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="button-center text-center mt-4">
+                            <button data-product={{tut.id}} data-action="add" class="btn btn-info add-btn update-cart">Add to cart</button>     
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+               
+            </div>
+
+        </div>
+    </section>
+    <!--//grids-sec1-->
+
+
+ <!--grids-sec1-->
+   
+    <!--//grids-sec1-->
+
+    <section class="w3l-grids">
+        <div class="grids-main">
+            <div class="container">
+                <div class="headerhny-title">
+                    <div class="w3l-title-grids">
+                        <div class="headerhny-left">
+                            <h3 class="hny-title">Papular Books</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3l-populohny-grids">
+                    {% for tut in books %}
+                    <div class="item vhny-grid">
+                        <div class="box16 mb-0">
+                            <a href="/view_book/{{tut.id}}">
+                                <figure>
+                                    <img class="img-fluid" src="{{ tut.imageURL }}" alt="{{tut.book_title}}" style="max-height: 340px; min-height: 160px;">
+                                </figure>
+                                <div class="box-content">
+                                    <h3 class="title">{{tut.book_title}}</h3>
+                                    <h3 class="title">{{tut.book_author}}</h3>
+                                    <h4> <span class="post"><span class="fa fa-clock-o"> </span> {{tut.book_published}}</span>
+                                        <span class="post fa fa-heart text-right"></span>
+                                    </h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="button-center text-center mt-4">
+                            <button data-product={{tut.id}} data-action="add" class="btn btn-info add-btn update-cart">Add to cart</button>     
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+               
+            </div>
+
+        </div>
+    </section>
+    <!--grids-sec2-->
+   

@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+    {% include "main/includes/head.html" %}
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+
+        function getToken(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getToken('csrftoken');
+    </script>
+
+<body>
+
+    <!-- header -->
+   {% include "main/includes/navbar.html" %}
+    <!-- //header -->
+    <div class="w3l-breadcrumbs">
+        <nav id="breadcrumbs" class="breadcrumbs">
+            <div class="container page-wrapper">
+                <a href="/">Home</a> » <span class="breadcrumb_last" aria-current="page">Book View</span>
+            </div>
+        </nav>
+    </div>
+    <!-- Book content -->
+    
+    {% include "main/includes/book_content.html" %}
+
+    <!-- //Book content -->
+
+
+    <!-- footer-66 -->
+  {% include "main/includes/footer.html" %}
+    <script type="text/javascript" src="{% static 'main/js/cart.js' %}"></script>
+    <!--//footer -->
+{% include "main/includes/scripts.html" %}
+</body>
+</html>
+<!-- responsive tabs -->
